@@ -27,16 +27,27 @@ class ViewController: UIViewController {
             gameStart()
         }
     }
+    @IBAction func triagnleTapped(_ sender: UITapGestureRecognizer) {
+        guard gameIsActive else { return }
+        repositionImage()
+        score += 1
+    }
+    private var score = 0
     private var timeLeft: TimeInterval = 0
     private var gameTimer: Timer?
     private var timer: Timer?
     private var gameIsActive = false
     private let displayDuration: TimeInterval = 2
     
-    private func gameStart() {
+    private func repositionImage() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: displayDuration, target: self, selector: #selector(moveImage), userInfo: nil, repeats: true)
         timer?.fire()
+    }
+    
+    private func gameStart() {
+        score = 0
+        repositionImage()
         gameTimer?.invalidate()
         gameTimer = Timer.scheduledTimer(
             timeInterval: 1, // как часто обновлять
@@ -52,6 +63,7 @@ class ViewController: UIViewController {
         gameTimer?.invalidate()
         timer?.invalidate()
         gameIsActive = false
+        scoreLabel.text = "Последний счет: \(score)"
         updateUI()
     }
     
@@ -72,6 +84,7 @@ class ViewController: UIViewController {
     }
     
     func updateUI() {
+        triangle.isHidden = !gameIsActive
         stepper.isEnabled = !gameIsActive
         if gameIsActive {
             timeLabel.text = "Осталось: \(Int(timeLeft)) сек"
@@ -91,6 +104,7 @@ class ViewController: UIViewController {
         gameFieldView.layer.borderWidth = 1
         gameFieldView.layer.borderColor = UIColor.gray.cgColor
         gameFieldView.layer.cornerRadius = 5
+        updateUI()
     }
     
     

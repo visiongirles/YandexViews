@@ -45,12 +45,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nw5-2M-H6B">
                                 <rect key="frame" x="37" y="151" width="347" height="640"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red-triangle-png-20" translatesAutoresizingMaskIntoConstraints="NO" id="zkJ-Kj-iRA">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red-triangle-png-20" translatesAutoresizingMaskIntoConstraints="NO" id="zkJ-Kj-iRA">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="66c-zr-vBR"/>
                                             <constraint firstAttribute="height" constant="80" id="NZ3-vq-6jN"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="RKd-2T-Id2" appends="YES" id="P6d-dn-FQ0"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -90,6 +94,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="RKd-2T-Id2">
+                    <connections>
+                        <action selector="triagnleTapped:" destination="BYZ-38-t0r" id="fAw-ue-TQt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-26.086956521739133" y="134.59821428571428"/>
         </scene>
