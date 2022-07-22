@@ -16,8 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="veI-mB-Rlu">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" maximumValue="60" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="veI-mB-Rlu">
                                 <rect key="frame" x="290" y="68" width="94" height="32"/>
+                                <connections>
+                                    <action selector="stepperChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ohi-lW-cUS"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время: 30 сек " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc3-QN-xsh">
                                 <rect key="frame" x="37" y="73.5" width="118" height="21"/>
@@ -29,6 +32,9 @@
                                 <rect key="frame" x="171" y="112" width="72" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Начать"/>
+                                <connections>
+                                    <action selector="buttonChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cOm-Jd-Xuv"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Последний счет: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzq-bH-44n">
                                 <rect key="frame" x="132.5" y="799" width="149" height="21"/>
@@ -39,12 +45,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nw5-2M-H6B">
                                 <rect key="frame" x="37" y="151" width="347" height="640"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red-triangle-png-20" translatesAutoresizingMaskIntoConstraints="NO" id="zkJ-Kj-iRA">
-                                        <rect key="frame" x="0.0" y="8" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red-triangle-png-20" translatesAutoresizingMaskIntoConstraints="NO" id="zkJ-Kj-iRA">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="66c-zr-vBR"/>
+                                            <constraint firstAttribute="height" constant="80" id="NZ3-vq-6jN"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="zkJ-Kj-iRA" firstAttribute="leading" secondItem="Nw5-2M-H6B" secondAttribute="leading" id="7mX-ae-tTt"/>
+                                    <constraint firstItem="zkJ-Kj-iRA" firstAttribute="top" secondItem="Nw5-2M-H6B" secondAttribute="top" id="NWC-hk-4MZ"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="doU-nC-WEC"/>
@@ -65,6 +78,16 @@
                             <constraint firstItem="kzq-bH-44n" firstAttribute="top" secondItem="Nw5-2M-H6B" secondAttribute="bottom" constant="8" symbolic="YES" id="xaE-ko-UrU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gameFieldView" destination="Nw5-2M-H6B" id="AcB-XN-pFV"/>
+                        <outlet property="scoreLabel" destination="kzq-bH-44n" id="iTG-3O-F8Q"/>
+                        <outlet property="shapeX" destination="NWC-hk-4MZ" id="kv0-ve-ouA"/>
+                        <outlet property="shapeY" destination="7mX-ae-tTt" id="tX5-8M-SN6"/>
+                        <outlet property="startButton" destination="ylB-Dr-alA" id="r3F-kq-JAO"/>
+                        <outlet property="stepper" destination="veI-mB-Rlu" id="prF-dV-Stv"/>
+                        <outlet property="timeLabel" destination="Zc3-QN-xsh" id="UjA-AY-Gmi"/>
+                        <outlet property="triangle" destination="zkJ-Kj-iRA" id="3uH-dI-c09"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
